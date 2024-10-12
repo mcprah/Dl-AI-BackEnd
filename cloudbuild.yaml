@@ -1,0 +1,13 @@
+steps:
+#Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t', 'us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1','.']
+#Push Image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1']
+#Deploy to Google Cloud run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'dennislaw-backend-docker-gcr-image', '--image','us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1', '--region', 'us-central1']
+images:
+- 'us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1'

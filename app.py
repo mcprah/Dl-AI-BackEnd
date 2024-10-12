@@ -23,7 +23,7 @@ app.config['DEBUG'] = os.environ.get('FLASK_DEBUG')
 
 @app.route('/')
 def hello_world():
-    return "DennisLaw Python Backend is Live Now!"
+    return "Updated DennisLaw Python Backend is Live Now!"
 
 if __name__ == '__main__':
     app.run(debug=True)
