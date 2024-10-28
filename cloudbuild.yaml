@@ -8,6 +8,6 @@ steps:
 #Deploy to Google Cloud run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'dennislaw-backend-docker-gcr-image', '--image','us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1', '--region', 'us-central1']
+  args: ['run', 'deploy', 'dennislaw-backend-docker-gcr-image', '--image','us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1', '--region', 'us-central1','--service-account', 'my-cloud-run-invoker@dl-ai-434417.iam.gserviceaccount.com']
 images:
 - 'us-central1-docker.pkg.dev/dl-ai-434417/dennislaw-backend-docker-repo/dennislaw-backend-docker-gcr-image:tag1'
