@@ -73,7 +73,7 @@ def query_discovery_engine_chat():
     }
 
     # Make the POST request to the Discovery Engine API
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers, json=payload, timeout=60)
 
     # Return the response from the Discovery Engine API to the client
     return jsonify(response.json()), response.status_code
